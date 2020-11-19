@@ -68,7 +68,7 @@ fun <T> addLimit(
 - ```WithCustomLimit```: make your own filter
 
 all these **types** have a ```lambda```, which is ```nullable``` and it helps to show **customize error** for each limit.  
-by passing ```lambda``` of filter, ```onValidateFailed``` function doesn't call for the filter  
+by passing ```lambda```, ```onValidateFailed``` function won't call.  
 here is an example:
 ```kotlin
 .addLimit(
