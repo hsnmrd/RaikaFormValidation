@@ -15,7 +15,7 @@ import com.google.android.material.textview.MaterialTextView
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-class FormValidation {
+object FormValidation {
     
     private var validationList = emptyList<FormValidationModel<*>>().toMutableList()
     private var customUI: ((FormValidationListener) -> Unit)? = null

@@ -18,7 +18,7 @@ private class MainActivity : AppCompatActivity(R.layout.activity_main) {
             this.til_activity_root_password.isErrorEnabled = false
             this.til_activity_root_confirm_password.isErrorEnabled = false
             
-            FormValidation()
+            FormValidation
                     .addLimit(
                             type = FormValidationType.WithRequiredLimit {
                                 this.til_activity_root_first_name.isErrorEnabled = true
