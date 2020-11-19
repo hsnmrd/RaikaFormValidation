@@ -5,28 +5,28 @@ sealed class FormValidationType {
     abstract val order: Int
     abstract var notValidListener: ((FormValidationListener) -> Unit)?
     
-    class WithNotNullFilter(
+    class WithNotNullLimit(
         notValid: ((FormValidationListener) -> Unit)? = null,
     ) : FormValidationType() {
         override val order = 0
         override var notValidListener = notValid
     }
     
-    class WithRequiredFilter(
+    class WithRequiredLimit(
         notValid: ((FormValidationListener) -> Unit)? = null,
     ) : FormValidationType() {
         override val order = 1
         override var notValidListener = notValid
     }
     
-    class WithCheckedFilter(
+    class WithCheckedLimit(
         notValid: ((FormValidationListener) -> Unit)? = null,
     ) : FormValidationType() {
         override val order = 2
         override var notValidListener = notValid
     }
     
-    class WithMinLengthFilter(
+    class WithMinLengthLimit(
         var length: Int,
         notValid: ((FormValidationListener) -> Unit)? = null,
     ) : FormValidationType() {
@@ -34,7 +34,7 @@ sealed class FormValidationType {
         override var notValidListener = notValid
     }
     
-    class WithMaxLengthFilter(
+    class WithMaxLengthLimit(
         var length: Int,
         notValid: ((FormValidationListener) -> Unit)? = null,
     ) : FormValidationType() {
@@ -42,7 +42,7 @@ sealed class FormValidationType {
         override var notValidListener = notValid
     }
     
-    class WithEqualLengthFilter(
+    class WithEqualLengthLimit(
         var length: Int,
         notValid: ((FormValidationListener) -> Unit)? = null,
     ) : FormValidationType() {
@@ -50,22 +50,22 @@ sealed class FormValidationType {
         override var notValidListener = notValid
     }
     
-    class WithCustomFilter(
-        var filter: () -> Boolean,
+    class WithCustomLimit(
+        var limit: () -> Boolean,
         notValid: ((FormValidationListener) -> Unit)? = null,
     ) : FormValidationType() {
         override val order = 6
         override var notValidListener = notValid
     }
     
-    class WithValidEmailFilter(
+    class WithValidEmailLimit(
         notValid: ((FormValidationListener) -> Unit)? = null,
     ) : FormValidationType() {
         override val order = 7
         override var notValidListener = notValid
     }
     
-    class WithConfirmFilter(
+    class WithConfirmLimit(
         var password: String,
         notValid: ((FormValidationListener) -> Unit)? = null,
     ) : FormValidationType() {
