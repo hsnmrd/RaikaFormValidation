@@ -25,7 +25,7 @@ class FormValidation {
         return this
     }
     
-    fun <T> addFilter(
+    fun <T> addLimit(
         type: FormValidationType,
         target: T,
         targetError: T? = null,
