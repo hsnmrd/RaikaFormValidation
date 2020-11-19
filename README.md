@@ -5,7 +5,7 @@
 ![Language](https://img.shields.io/badge/language-Kotlin-red.svg)
 
 there are lots of boring ways to check form validation!  
-**this library** is an easy form validation for android apps.  
+**this library** offers an easy form validation for android apps.  
 the library will works with  
 - **TextViews**: TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
 - **EditTexts**: EditText, AppCompatEditText, TextInputEditText
