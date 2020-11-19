@@ -67,6 +67,8 @@ fun <T> addLimit(
 - ```WithConfirmLimit```: (for ```confirm password``` or ```confirm email```) check if field value is same as passed data 
 - ```WithCustomLimit```: make your own filter
 
+
+##### error for each limit  
 all these **types** have a ```lambda```, which is ```nullable``` and it helps to show **customize error** for each limit.  
 by passing ```lambda```, ```onValidateFailed``` function won't call.  
 here is an example:
