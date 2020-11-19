@@ -81,7 +81,17 @@ here is an example:
 
 
 1-3. ```targetError```: if an error is going to show on a different target view, then ```targetError``` will useful.  
-it's a nullable argument, so if ```target``` is equal to ```targetError```, then no need to pass ```targetError```
+it's a nullable argument, so if ```target``` is equal to ```targetError```, then no need to pass ```targetError```. 
+by passing ```target``` without ```targetError```, ```targetError``` will get ```target``` value. 
+here is an example, which has different ```target``` and ```targetError```
+```kotlin
+.addFilter(
+    type = FormValidationType.WithRequiredFilter(),
+    target = this.iet_activity_root_first_name, // passed TextInputEditText
+    targetError = this.til_activity_root_first_name, // passed TextInputLayout
+    message = "first name is required"
+)
+```  
 
 1-4. ```message```: pass your error message 
 
@@ -93,10 +103,28 @@ it's a nullable argument, so if ```target``` is equal to ```targetError```, then
 
 
 
-
-1-2. ```onValidateFailed```: handle errors with **onValidateFailed**  
-as mentioned in ```1-1``` this function will call for  
-
+#### 2. onValidateFailed  
+```kotlin
+fun onValidateFailed(customUI: ((FormValidationListener) -> Unit)? = null): FormValidation {
+	this.customUI = customUI
+	return this
+}
+```
+2-1. ```onValidateFailed```: handle errors with **onValidateFailed** function  
+as mentioned in ```1-1``` this function will call if the lambda of ```type``` argument didn't pass  
+type, targetview 
+  ```kotlin
+  FormValidation()
+	.addLimit(
+	    type = FormValidationType.WithRequiredFilter(),
+	    target = this.iet_activity_root_first_name,
+	    message = "first name is required"
+	)
+	.onValidateFailed {
+	    Log.e("error", "${it.message} with type: ${it.type}")
+	    // todo : show some error to user
+	}
+  ```
 
 
 
