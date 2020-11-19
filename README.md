@@ -23,7 +23,7 @@ the library will works with
   here is an example:
   ```kotlin
   FormValidation()
-	.addFilter(
+	.addLimit(
 	    type = FormValidationType.WithRequiredFilter(),
 	    target = this.iet_activity_root_first_name,
 	    message = "first name is required"
@@ -39,9 +39,9 @@ the library will works with
   
   
 # Functions  
-#### 1. addFilter
+#### 1. addLimit
 ```kotlin
-fun <T> addFilter(
+fun <T> addLimit(
         type: FormValidationType,
         target: T,
         targetError: T? = null,
@@ -76,4 +76,31 @@ here is an example:
     message = "first name is required"
 )
 ```  
-1-2.
+
+1-2. ```target```: a field that needs to have a constraint
+
+
+1-3. ```targetError```: if an error is going to show on a different target view, then ```targetError``` will useful.  
+it's a nullable argument, so if ```target``` is equal to ```targetError```, then no need to pass ```targetError```
+
+1-4. ```message```: pass your error message 
+
+
+
+
+
+
+
+
+
+
+1-2. ```onValidateFailed```: handle errors with **onValidateFailed**  
+as mentioned in ```1-1``` this function will call for  
+
+
+
+
+
+
+
+
