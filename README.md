@@ -118,7 +118,7 @@ fun onValidateFailed(customUI: ((FormValidationListener) -> Unit)? = null): Form
 }
 ```
 handle errors with **onValidateFailed** function  
-as mentioned in ```1-1``` this function will call **if** the lambda of ```type``` argument didn't passed.  
+as mentioned in [1-1](https://github.com/hsnmrd/RaikaFormValidation#1-1-type-there-are-some-const-filter-types) this function will call **if** the lambda of ```type``` argument didn't passed.  
 ```type```, ```targetview```, ```message``` is accessable in this function.  
   ```kotlin
   FormValidation()
