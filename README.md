@@ -13,6 +13,11 @@ the library will works with
 - **Lists**: MutableList, List, ArrayList
 - **string**  
 
+# category
+- [how to use](https://github.com/hsnmrd/RaikaFormValidation#usage)  
+- [functions](https://github.com/hsnmrd/RaikaFormValidation#functions)  
+
+
 # Usage  
 - first add dependency to your build.gradle file  
 	```groovy
@@ -126,7 +131,7 @@ as mentioned in ```1-1``` this function will call **if** the lambda of ```type``
 	    Log.e("error", "${it.message} with type: ${it.type}")
 	    // todo : show some error to user
 	}
-  ```
+  ```  
 
 
 
