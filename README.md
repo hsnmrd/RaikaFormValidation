@@ -6,7 +6,7 @@
 
 there are lots of boring ways to check form validation!  
 **this library** offers an easy form validation for android apps.  
-the library will works with  
+the library will work with  
 - **TextViews**: TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
 - **EditTexts**: EditText, AppCompatEditText, TextInputEditText
 - **CheckBoxs**: CheckBox, AppCompatCheckBox, MaterialCheckBox
@@ -57,18 +57,18 @@ fun <T> addLimit(
 
 ### Params  
 1-1. ```type```: there are some const filter types  
-- ```WithNotNullFilter```: (for ```String```) check that String is null
-- ```WithCheckedFilter```: (for ```checkbox```) check that checkbox is checked
-- ```WithRequiredFilter```: check that field has value
-- ```WithMinLengthFilter```: check that field has minimum limit character
-- ```WithMaxLengthFilter```: check that field has maximum limit character
-- ```WithEqualLengthFilter```: check that field has spesefic length
-- ```WithValidEmailFilter```: check that email is valid 
-- ```WithConfirmFilter```: (for ```confirm password``` or ```confirm email```) check that field value is same as passed data 
+- ```WithNotNullFilter```: (for ```String```) check if String is null
+- ```WithCheckedFilter```: (for ```checkbox```) check if checkbox is checked
+- ```WithRequiredFilter```: check if field has value
+- ```WithMinLengthFilter```: check if field has minimum limit character
+- ```WithMaxLengthFilter```: check if field has maximum limit character
+- ```WithEqualLengthFilter```: check if field has spesefic length
+- ```WithValidEmailFilter```: check if email is valid 
+- ```WithConfirmFilter```: (for ```confirm password``` or ```confirm email```) check if field value is same as passed data 
 - ```WithCustomFilter```: make your own filter
 
-all these **types** has a ```lambda```, which is ```nullable``` and it helps to show **customize error** for each limit.  
-by passing ```lambda``` of filter, ```onValidateFailed``` function doesn't call for the filter
+all these **types** have a ```lambda```, which is ```nullable``` and it helps to show **customize error** for each limit.  
+by passing ```lambda``` of filter, ```onValidateFailed``` function doesn't call for the filter  
 here is an example:
 ```kotlin
 .addFilter(
@@ -85,10 +85,10 @@ here is an example:
 1-2. ```target```: a field that needs to have a constraint
 
 
-1-3. ```targetError```: if an error is going to show on a different target view, then ```targetError``` will useful.  
-it's a nullable argument, so if ```target``` is equal to ```targetError```, then no need to pass ```targetError```. 
+1-3. ```targetError```: if an error is going to be shown on a different target view, then ```targetError``` will be useful.  
+it's a nullable argument, so if ```target``` is equal to ```targetError```, then there is no need to pass ```targetError```. 
 by passing ```target``` without ```targetError```, ```targetError``` will get ```target``` value. 
-here is an example, which has different ```target``` and ```targetError```
+here is an example, with different ```target``` and ```targetError```
 ```kotlin
 .addFilter(
     type = FormValidationType.WithRequiredFilter(),
