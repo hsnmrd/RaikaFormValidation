@@ -29,7 +29,7 @@ the library will work with
   ```kotlin
   FormValidation()
 	.addLimit(
-	    type = FormValidationType.WithRequiredFilter(),
+	    type = FormValidationType.WithRequiredLimit(),
 	    target = this.iet_activity_root_first_name,
 	    message = "first name is required"
 	)
@@ -57,22 +57,24 @@ fun <T> addLimit(
 
 ### Params  
 #### 1-1. ```type```: there are some const filter types  
-- ```WithNotNullFilter```: (for ```String```) check if String is null
-- ```WithCheckedFilter```: (for ```checkbox```) check if checkbox is checked
-- ```WithRequiredFilter```: check if field has value
-- ```WithMinLengthFilter```: check if field has minimum limit character
-- ```WithMaxLengthFilter```: check if field has maximum limit character
-- ```WithEqualLengthFilter```: check if field has spesefic length
-- ```WithValidEmailFilter```: check if email is valid 
-- ```WithConfirmFilter```: (for ```confirm password``` or ```confirm email```) check if field value is same as passed data 
-- ```WithCustomFilter```: make your own filter
+- ```WithNotNullLimit```: (for ```String```) check if String is null
+- ```WithCheckedLimit```: (for ```checkbox```) check if checkbox is checked
+- ```WithRequiredLimit```: check if field has value
+- ```WithMinLengthLimit```: check if field has minimum limit character
+- ```WithMaxLengthLimit```: check if field has maximum limit character
+- ```WithEqualLengthLimit```: check if field has spesefic length
+- ```WithValidEmailLimit```: check if email is valid 
+- ```WithConfirmLimit```: (for ```confirm password``` or ```confirm email```) check if field value is same as passed data 
+- ```WithCustomLimit```: make your own filter
 
+
+##### - error for each limit  
 all these **types** have a ```lambda```, which is ```nullable``` and it helps to show **customize error** for each limit.  
-by passing ```lambda``` of filter, ```onValidateFailed``` function doesn't call for the filter  
+by passing ```lambda```, ```onValidateFailed``` function won't call.  
 here is an example:
 ```kotlin
-.addFilter(
-    type = FormValidationType.WithRequiredFilter {
+.addLimit(
+    type = FormValidationType.WithRequiredLimit {
     	// here show specific error for this filter - has access to [it.type] and [it.message] and [it.targetView] 
 	this.til_activity_root_first_name.isErrorEnabled = true
 	this.til_activity_root_first_name.error = it.message
@@ -90,8 +92,8 @@ it's a nullable argument, so if ```target``` is equal to ```targetError```, then
 by passing ```target``` without ```targetError```, ```targetError``` will get ```target``` value. 
 here is an example, with different ```target``` and ```targetError```
 ```kotlin
-.addFilter(
-    type = FormValidationType.WithRequiredFilter(),
+.addLimit(
+    type = FormValidationType.WithRequiredLimit(),
     target = this.iet_activity_root_first_name, // passed TextInputEditText
     targetError = this.til_activity_root_first_name, // passed TextInputLayout
     message = "first name is required"
@@ -123,7 +125,7 @@ as mentioned in [1-1](https://github.com/hsnmrd/RaikaFormValidation#1-1-type-the
   ```kotlin
   FormValidation()
 	.addLimit(
-	    type = FormValidationType.WithRequiredFilter(),
+	    type = FormValidationType.WithRequiredLimit(),
 	    target = this.iet_activity_root_first_name,
 	    message = "first name is required"
 	)
