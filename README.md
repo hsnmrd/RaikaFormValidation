@@ -13,7 +13,7 @@ the library will work with
 - **Lists**: MutableList, List, ArrayList
 - **string**  
 
-# category
+# Contents
 - [how to use](https://github.com/hsnmrd/RaikaFormValidation#usage)  
 - [functions](https://github.com/hsnmrd/RaikaFormValidation#functions)  
 - [error for each limit](https://github.com/hsnmrd/RaikaFormValidation#error-for-each-limit)  
