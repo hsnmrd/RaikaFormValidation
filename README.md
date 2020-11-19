@@ -24,7 +24,7 @@ the library will works with
 	implementation '-'
 	```
   
-- then use ```FormValidation``` **class** with ```addFilter``` & ```isValidate``` & ```onValidateFailed``` **functions**.   
+- then use ```FormValidation``` **class** with ```addLimit``` & ```isValidate``` & ```onValidateFailed``` **functions**.   
   here is an example:
   ```kotlin
   FormValidation()
