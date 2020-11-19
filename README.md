@@ -56,7 +56,7 @@ fun <T> addLimit(
     
 
 ### Params  
-## 1-1. ```type```: there are some const filter types  
+#### 1-1. ```type```: there are some const filter types  
 - ```WithNotNullFilter```: (for ```String```) check if String is null
 - ```WithCheckedFilter```: (for ```checkbox```) check if checkbox is checked
 - ```WithRequiredFilter```: check if field has value
@@ -82,10 +82,10 @@ here is an example:
 )
 ```  
 
-## 1-2. ```target```: a field that needs to have a constraint
+#### 1-2. ```target```: a field that needs to have a constraint
 
 
-## 1-3. ```targetError```: if an error is going to be shown on a different target view, then ```targetError``` will be useful.  
+#### 1-3. ```targetError```: if an error is going to be shown on a different target view, then ```targetError``` will be useful.  
 it's a nullable argument, so if ```target``` is equal to ```targetError```, then there is no need to pass ```targetError```. 
 by passing ```target``` without ```targetError```, ```targetError``` will get ```target``` value. 
 here is an example, with different ```target``` and ```targetError```
@@ -98,7 +98,7 @@ here is an example, with different ```target``` and ```targetError```
 )
 ```  
 
-## 1-4. ```message```: pass your error message 
+#### 1-4. ```message```: pass your error message 
 
 
 
