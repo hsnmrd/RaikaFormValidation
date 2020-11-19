@@ -70,22 +70,22 @@ class FormValidation {
     
     private fun handleList(validationItem: FormValidationModel<*>, it: Collection<*>): Boolean {
         when (validationItem.type) {
-            is FormValidationType.WithValidEmailFilter,
-            is FormValidationType.WithMinLengthFilter,
-            is FormValidationType.WithMaxLengthFilter,
-            is FormValidationType.WithEqualLengthFilter,
-            is FormValidationType.WithCheckedFilter,
-            is FormValidationType.WithNotNullFilter,
-            is FormValidationType.WithConfirmFilter -> {
+            is FormValidationType.WithValidEmailLimit,
+            is FormValidationType.WithMinLengthLimit,
+            is FormValidationType.WithMaxLengthLimit,
+            is FormValidationType.WithEqualLengthLimit,
+            is FormValidationType.WithCheckedLimit,
+            is FormValidationType.WithNotNullLimit,
+            is FormValidationType.WithConfirmLimit -> {
                 throw IllegalArgumentException("FormValidation: Lists Just Supports [FormValidationType.Custom] and FormValidationType.NotEmpty Types")
             }
-            is FormValidationType.WithCustomFilter -> {
-                return (validationItem.type as FormValidationType.WithCustomFilter).filter.invoke()
+            is FormValidationType.WithCustomLimit -> {
+                return (validationItem.type as FormValidationType.WithCustomLimit).limit.invoke()
                     .also { result ->
                         handleFilter(validationItem, result)
                     }
             }
-            is FormValidationType.WithRequiredFilter -> {
+            is FormValidationType.WithRequiredLimit -> {
                 return it.isNotEmpty().also { result ->
                     handleFilter(validationItem, result)
                 }
@@ -96,7 +96,7 @@ class FormValidation {
     private fun handleEditText(validationItem: FormValidationModel<*>, it: TextView): Boolean {
         when (validationItem.type) {
     
-            is FormValidationType.WithValidEmailFilter -> {
+            is FormValidationType.WithValidEmailLimit -> {
                 val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
                 val pattern: Pattern =
                     Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
@@ -106,45 +106,45 @@ class FormValidation {
                 }
             }
     
-            is FormValidationType.WithConfirmFilter -> {
-                return (it.text.toString() == (validationItem.type as FormValidationType.WithConfirmFilter).password).also { result ->
+            is FormValidationType.WithConfirmLimit -> {
+                return (it.text.toString() == (validationItem.type as FormValidationType.WithConfirmLimit).password).also { result ->
                     handleFilter(validationItem, result)
                 }
             }
     
-            is FormValidationType.WithMinLengthFilter -> {
-                return (it.text.trim().length >= (validationItem.type as FormValidationType.WithMinLengthFilter).length).also { result ->
+            is FormValidationType.WithMinLengthLimit -> {
+                return (it.text.trim().length >= (validationItem.type as FormValidationType.WithMinLengthLimit).length).also { result ->
                     handleFilter(validationItem, result)
                 }
             }
     
-            is FormValidationType.WithMaxLengthFilter -> {
-                return (it.text.trim().length <= (validationItem.type as FormValidationType.WithMaxLengthFilter).length).also { result ->
+            is FormValidationType.WithMaxLengthLimit -> {
+                return (it.text.trim().length <= (validationItem.type as FormValidationType.WithMaxLengthLimit).length).also { result ->
                     handleFilter(validationItem, result)
                 }
             }
     
-            is FormValidationType.WithEqualLengthFilter -> {
-                return (it.text.trim().length == (validationItem.type as FormValidationType.WithEqualLengthFilter).length).also { result ->
+            is FormValidationType.WithEqualLengthLimit -> {
+                return (it.text.trim().length == (validationItem.type as FormValidationType.WithEqualLengthLimit).length).also { result ->
                     handleFilter(validationItem, result)
                 }
             }
     
-            is FormValidationType.WithCustomFilter -> {
-                return (validationItem.type as FormValidationType.WithCustomFilter).filter.invoke()
+            is FormValidationType.WithCustomLimit -> {
+                return (validationItem.type as FormValidationType.WithCustomLimit).limit.invoke()
                     .also { result ->
                         handleFilter(validationItem, result)
                     }
             }
     
-            is FormValidationType.WithRequiredFilter -> {
+            is FormValidationType.WithRequiredLimit -> {
                 return (it.text.trim().isNotEmpty()).also { result ->
                     handleFilter(validationItem, result)
                 }
             }
     
-            is FormValidationType.WithCheckedFilter,
-            is FormValidationType.WithNotNullFilter -> throw IllegalArgumentException("FormValidation: EditText View Not Supports FormValidationType.Checked Type")
+            is FormValidationType.WithCheckedLimit,
+            is FormValidationType.WithNotNullLimit -> throw IllegalArgumentException("FormValidation: EditText View Not Supports FormValidationType.Checked Type")
         }
     }
     
@@ -152,7 +152,7 @@ class FormValidation {
     private fun handleCheckBox(validationItem: FormValidationModel<*>, it: CheckBox): Boolean {
         when (validationItem.type) {
     
-            is FormValidationType.WithCheckedFilter -> {
+            is FormValidationType.WithCheckedLimit -> {
                 return it.isChecked.also { result ->
                     handleFilter(validationItem, result)
                 }
@@ -166,13 +166,13 @@ class FormValidation {
     private fun handleStringType(validationItem: FormValidationModel<*>, it: String?): Boolean {
         when (validationItem.type) {
     
-            is FormValidationType.WithNotNullFilter -> {
+            is FormValidationType.WithNotNullLimit -> {
                 return (!it.isNullOrEmpty() && it != "null").also { result ->
                     handleFilter(validationItem, result)
                 }
             }
     
-            is FormValidationType.WithValidEmailFilter -> {
+            is FormValidationType.WithValidEmailLimit -> {
                 val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
                 val pattern: Pattern =
                     Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
@@ -182,44 +182,44 @@ class FormValidation {
                 }
             }
     
-            is FormValidationType.WithConfirmFilter -> {
-                return (it == (validationItem.type as FormValidationType.WithConfirmFilter).password).also { result ->
+            is FormValidationType.WithConfirmLimit -> {
+                return (it == (validationItem.type as FormValidationType.WithConfirmLimit).password).also { result ->
                     handleFilter(validationItem, result)
                 }
             }
     
-            is FormValidationType.WithMinLengthFilter -> {
-                return (it.toString().length >= (validationItem.type as FormValidationType.WithMinLengthFilter).length).also { result ->
+            is FormValidationType.WithMinLengthLimit -> {
+                return (it.toString().length >= (validationItem.type as FormValidationType.WithMinLengthLimit).length).also { result ->
                     handleFilter(validationItem, result)
                 }
             }
     
-            is FormValidationType.WithMaxLengthFilter -> {
-                return (it.toString().length <= (validationItem.type as FormValidationType.WithMaxLengthFilter).length).also { result ->
+            is FormValidationType.WithMaxLengthLimit -> {
+                return (it.toString().length <= (validationItem.type as FormValidationType.WithMaxLengthLimit).length).also { result ->
                     handleFilter(validationItem, result)
                 }
             }
     
-            is FormValidationType.WithEqualLengthFilter -> {
-                return (it.toString().length == (validationItem.type as FormValidationType.WithEqualLengthFilter).length).also { result ->
+            is FormValidationType.WithEqualLengthLimit -> {
+                return (it.toString().length == (validationItem.type as FormValidationType.WithEqualLengthLimit).length).also { result ->
                     handleFilter(validationItem, result)
                 }
             }
     
-            is FormValidationType.WithCustomFilter -> {
-                return (validationItem.type as FormValidationType.WithCustomFilter).filter.invoke()
+            is FormValidationType.WithCustomLimit -> {
+                return (validationItem.type as FormValidationType.WithCustomLimit).limit.invoke()
                     .also { result ->
                         handleFilter(validationItem, result)
                     }
             }
     
-            is FormValidationType.WithRequiredFilter -> {
+            is FormValidationType.WithRequiredLimit -> {
                 return (it.toString().isNotEmpty()).also { result ->
                     handleFilter(validationItem, result)
                 }
             }
     
-            is FormValidationType.WithCheckedFilter -> throw IllegalArgumentException("FormValidation: EditText View Not Supports FormValidationType.Checked Type")
+            is FormValidationType.WithCheckedLimit -> throw IllegalArgumentException("FormValidation: EditText View Not Supports FormValidationType.Checked Type")
         }
     }
     
