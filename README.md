@@ -102,7 +102,9 @@ here is an example, which has different ```target``` and ```targetError```
 
 
 
-
+----------  
+  
+  
 #### 2. onValidateFailed  
 ```kotlin
 fun onValidateFailed(customUI: ((FormValidationListener) -> Unit)? = null): FormValidation {
@@ -111,8 +113,8 @@ fun onValidateFailed(customUI: ((FormValidationListener) -> Unit)? = null): Form
 }
 ```
 2-1. ```onValidateFailed```: handle errors with **onValidateFailed** function  
-as mentioned in ```1-1``` this function will call if the lambda of ```type``` argument didn't pass  
-type, targetview 
+as mentioned in ```1-1``` this function will call **if** the lambda of ```type``` argument didn't passed.  
+```type```, ```targetview```, ```message``` is accessable in this function.  
   ```kotlin
   FormValidation()
 	.addLimit(
