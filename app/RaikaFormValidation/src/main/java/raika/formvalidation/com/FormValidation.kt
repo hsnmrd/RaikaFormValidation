@@ -1,4 +1,4 @@
-package raika.raikaformvalidation.com
+package raika.formvalidation.com
 
 class FormValidation {
 
@@ -42,5 +42,9 @@ class FormValidation {
         var type: MutableList<WithConstraint> = emptyList<WithConstraint>().toMutableList()
     )
 
+    data class WithConstraint(
+        var constraint:  Boolean,
+        var notValidListener: (() -> Unit)? = null,
+    )
 
 }

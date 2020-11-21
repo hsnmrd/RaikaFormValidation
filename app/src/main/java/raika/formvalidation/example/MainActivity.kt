@@ -1,8 +1,10 @@
-package raika.raikaformvalidation.com
+package raika.formvalidation.example
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import raika.formvalidation.com.constraints.isEmail
+import raika.formvalidation.com.constraints.isRequire
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -11,14 +13,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 
         this.btn_activity_confirm_password.setOnClickListener {
-            FormValidation()
+            raika.formvalidation.com.FormValidation()
                 .addConstraint(this.iet_activity_root_first_name) {
                     isRequire {
                         // todo : control error
                     }
                 }
                 .addConstraint(this.iet_activity_root_email) {
-                    isEmailValid {
+                    isEmail {
                         // todo : control error
                     }
                 }

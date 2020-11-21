@@ -1,4 +1,4 @@
-package raika.raikaformvalidation.com
+package raika.formvalidation.example
 
 import org.junit.Test
 
