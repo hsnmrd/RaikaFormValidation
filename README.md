@@ -13,9 +13,10 @@ the library will work with
 - **Lists**: MutableList, List, ArrayList
 - **string**  
 
-# category
+# Contents
 - [how to use](https://github.com/hsnmrd/RaikaFormValidation#usage)  
 - [functions](https://github.com/hsnmrd/RaikaFormValidation#functions)  
+  [error for each limit](https://github.com/hsnmrd/RaikaFormValidation#error-for-each-limit)  
 
 
 # Usage  
@@ -68,9 +69,9 @@ fun <T> addLimit(
 - ```WithCustomLimit```: make your own filter
 
 
-##### - error for each limit  
+#### error for each limit  
 all these **types** have a ```lambda```, which is ```nullable``` and it helps to show **customize error** for each limit.  
-by passing ```lambda```, ```onValidateFailed``` function won't call.  
+by passing ```lambda```, ```onValidateFailed``` function won't call for that specific **limit**.  
 here is an example:
 ```kotlin
 .addLimit(
