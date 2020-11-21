@@ -10,8 +10,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
+        
         this.btn_activity_confirm_password.setOnClickListener {
             raika.formvalidation.com.FormValidation()
                 .addConstraint(this.iet_activity_root_first_name) {

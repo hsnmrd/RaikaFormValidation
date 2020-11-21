@@ -51,3 +51,7 @@ fun TextView.isContaining(value: String, errorListener: () -> Unit) {
     checkConstraintResult(this.text.toString().trim()
         .contains(value)) { errorListener() }
 }
+
+fun TextView.isConfirm(value: String, errorListener: () -> Unit) {
+    checkConstraintResult(this.text.toString().trim() == value) { errorListener() }
+}
