@@ -26,7 +26,7 @@ the library will work with
 ```groovy
 allprojects {
 	repositories {
-		...
+		..
 		maven { url 'https://jitpack.io' }
 	}
 }
