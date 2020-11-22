@@ -42,7 +42,6 @@ dependencies {
 ```  
   
 - Step 3. use ```FormValidation``` **class** and ```addConstraint```, ```isValidate``` **functions**.   
-  here is an example:
 ```kotlin
 FormValidation()
 	.addConstraint(this.iet_activity_root_first_name) {
@@ -62,28 +61,21 @@ FormValidation()
   
   
 # Functions  
-#### 1. addLimit
+#### 1. addConstraint
 ```kotlin
-fun <T> addLimit(
-        type: FormValidationType,
-        target: T,
-        targetError: T? = null,
-        message: String,
-    )
+fun <T> addConstraint(
+	target: T,
+	type: T.() -> Unit,
+): FormValidation {
+	validationList.add(FormValidationModel(target))
+	type(target)
+	return this
+}
 ```
     
 
 ### Params  
-#### 1-1. ```type```: there are some const filter types  
-- ```WithNotNullLimit```: (for ```String```) check if String is null
-- ```WithCheckedLimit```: (for ```checkbox```) check if checkbox is checked
-- ```WithRequiredLimit```: check if field has value
-- ```WithMinLengthLimit```: check if field has minimum limit character
-- ```WithMaxLengthLimit```: check if field has maximum limit character
-- ```WithEqualLengthLimit```: check if field has spesefic length
-- ```WithValidEmailLimit```: check if email is valid 
-- ```WithConfirmLimit```: (for ```confirm password``` or ```confirm email```) check if field value is same as passed data 
-- ```WithCustomLimit```: make your own filter
+#### 1-1. ```target```: pass the **target** you want to **limit**
 
 
 #### error for each limit  
