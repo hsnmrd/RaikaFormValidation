@@ -62,7 +62,7 @@ FormValidation()
 	    }
 	}
 	.isValidate {
-
+		// form is valid
 	}
 ```
   
