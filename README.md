@@ -17,6 +17,7 @@ the library will work with
 - **```Float```**  
 - **```Double```**  
 - **```Date```**  
+- **```Additional Target```** [```check```](https://github.com/hsnmrd/RaikaFormValidation#supporting-additional-target) 
 
 # Contents
 - [How To Use](https://github.com/hsnmrd/RaikaFormValidation#usage)  
