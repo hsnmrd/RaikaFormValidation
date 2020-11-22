@@ -3,6 +3,10 @@ package com.raika.validform.constraints
 import com.raika.validform.checkConstraintResult
 import java.util.*
 
+fun Date?.isNotNull(errorListener: () -> Unit) {
+    checkConstraintResult(this != null) { errorListener() }
+}
+
 fun Date.isAtMost(max: Date, errorListener: () -> Unit) {
     checkConstraintResult(this <= max) { errorListener() }
 }
