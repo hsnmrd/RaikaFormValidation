@@ -8,14 +8,14 @@
 there are lots of boring ways to check form validation!  
 **this library** offers an easy validation for android apps.  
 the library will work with  
-- **TextViews**: TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
-- **EditTexts**: EditText, AppCompatEditText, TextInputEditText
-- **CheckBoxs**: CheckBox, AppCompatCheckBox, MaterialCheckBox
-- **Lists**: MutableList, List, ArrayList
-- **String**  
-- **Int**  
-- **Float**  
-- **Double**  
+- **```TextViews```**: TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
+- **```EditTexts```**: EditText, AppCompatEditText, TextInputEditText
+- **```CheckBoxs```**: CheckBox, AppCompatCheckBox, MaterialCheckBox
+- **```Lists```**: MutableList, List, ArrayList
+- **```String```**  
+- **```Int```**  
+- **```Float```**  
+- **```Double```**  
 
 # Contents
 - [how to use](https://github.com/hsnmrd/RaikaFormValidation#usage)  
@@ -41,7 +41,7 @@ dependencies {
 }
 ```  
   
-- then use ```FormValidation``` **class** with ```addLimit``` & ```isValidate``` & ```onValidateFailed``` **functions**.   
+- Step 3. use ```FormValidation``` **class** and ```addConstraint```, ```isValidate``` **functions**.   
   here is an example:
   ```kotlin
   FormValidation()
