@@ -16,11 +16,14 @@ the library will work with
 - **```Int```**  
 - **```Float```**  
 - **```Double```**  
+- **```Date```**  
+- **```Additional Target```** [```check```](https://github.com/hsnmrd/RaikaFormValidation#supporting-additional-target) 
 
 # Contents
-- [how to use](https://github.com/hsnmrd/RaikaFormValidation#usage)  
-- [functions](https://github.com/hsnmrd/RaikaFormValidation#functions)  
-  [error for each limit](https://github.com/hsnmrd/RaikaFormValidation#error-for-each-limit)  
+- [How To Use](https://github.com/hsnmrd/RaikaFormValidation#usage)  
+- [Functions](https://github.com/hsnmrd/RaikaFormValidation#functions)  
+- [Restrictions](https://github.com/hsnmrd/RaikaFormValidation#restrictions) 
+- [Supporting Additional Target](https://github.com/hsnmrd/RaikaFormValidation#supporting-additional-target) 
 
 
 # Usage  
@@ -54,24 +57,23 @@ FormValidation()
 	    isEmail {
 		// todo : control error
 	    }
+	    isRequire {
+		// todo : control error
+	    }
 	}
 	.isValidate {
-
+		// form is valid
 	}
 ```
   
   
 # Functions  
-#### 1. addConstraint
+#### 1. ```addConstraint```: add the Restriction to specific target  
 ```kotlin
 fun <T> addConstraint(
 	target: T,
 	type: T.() -> Unit,
-): FormValidation {
-	validationList.add(FormValidationModel(target))
-	type(target)
-	return this
-}
+): FormValidation {}
 ```
     
 ### Params  
@@ -79,101 +81,59 @@ fun <T> addConstraint(
 - ```type``` some **restrictions** are available due to the target passed.  
  
  
-### Some restrictions  
-- ```EditText```, ```TextView```    
+### Restrictions
+- ```EditText```, ```TextView```   
+
 	**```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  **```isContaining {}```**  
 
 - ```String```    
+
 	**```isNotNull {}```**  **```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  
 
 - ```Collection```    
+
 	**```isRequire {}```**  
 	
+- ```CheckBox```    
+
+	**```isChecked {}```**  
 	
-- ```Int```    
+- ```Int``` ```Float``` ```Double``` ```Date```
+
 	**```isNotNull {}```**  **```isAtMost {}```**  **```isLessThan {}```**  **```isAtLeast {}```**  **```isGreaterThan {}```**  **```isIn {}```**  **```isEqual {}```**  
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-#### error for each limit  
-all these **types** have a ```lambda```, which is ```nullable``` and it helps to show **customize error** for each limit.  
-by passing ```lambda```, ```onValidateFailed``` function won't call for that specific **limit**.  
-here is an example:
+#### 2. ```isValidate```: check if the form is valid	 
 ```kotlin
-.addLimit(
-    type = FormValidationType.WithRequiredLimit {
-    	// here show specific error for this filter - has access to [it.type] and [it.message] and [it.targetView] 
-	this.til_activity_root_first_name.isErrorEnabled = true
-	this.til_activity_root_first_name.error = it.message
-    },
-    target = this.iet_activity_root_first_name,
-    message = "first name is required"
-)
+fun isValidate(listener: () -> Unit) {}
 ```  
 
-#### 1-2. ```target```: a field that needs to have a constraint
-
-
-#### 1-3. ```targetError```: if an error is going to be shown on a different target view, then ```targetError``` will be useful.  
-it's a nullable argument, so if ```target``` is equal to ```targetError```, then there is no need to pass ```targetError```. 
-by passing ```target``` without ```targetError```, ```targetError``` will get ```target``` value. 
-here is an example, with different ```target``` and ```targetError```
+---------- 
+	
+	
+# Supporting Additional Target  
+if there is a **type** which is *not supported*, here is a way to implement your custom **restriction**.  
+- Step 1. make a **kotlin file**.  
+- Step 2. make your **custom restriction** by using **```checkConstraintResult ()```** function and pass a **```condition```** as an argument.  
+	**```checkConstraintResult```'s** callback will call if the passed argument (```condition```) is **false**.  
+	so **improve** your restriction by making a **lambda** which is called **```errorListener```** as shown in below and call it when condition result is **false**.  
 ```kotlin
-.addLimit(
-    type = FormValidationType.WithRequiredLimit(),
-    target = this.iet_activity_root_first_name, // passed TextInputEditText
-    targetError = this.til_activity_root_first_name, // passed TextInputLayout
-    message = "first name is required"
-)
+fun Type.yourRestrictionName(errorListener: () -> Unit) {
+    checkConstraintResult(condition) { errorListener() }
+}  
 ```  
 
-#### 1-4. ```message```: pass your error message 
-
-
-
-
-
-
-
-
-----------  
-  
-  
-#### 2. onValidateFailed  
-```kotlin
-fun onValidateFailed(customUI: ((FormValidationListener) -> Unit)? = null): FormValidation {
-	this.customUI = customUI
-	return this
+for more explanation check one of written restriction.  
+``` kotlin
+fun TextView.isRequire(errorListener: () -> Unit) {
+    checkConstraintResult(this.text.toString().trim().isNotEmpty()) { errorListener() }
 }
-```
-handle errors with **onValidateFailed** function  
-as mentioned in [1-1](https://github.com/hsnmrd/RaikaFormValidation#1-1-type-there-are-some-const-filter-types) this function will call **if** the lambda of ```type``` argument didn't passed.  
-```type```, ```targetview```, ```message``` is accessable in this function.  
-  ```kotlin
-  FormValidation()
-	.addLimit(
-	    type = FormValidationType.WithRequiredLimit(),
-	    target = this.iet_activity_root_first_name,
-	    message = "first name is required"
-	)
-	.onValidateFailed {
-	    Log.e("error", "${it.message} with type: ${it.type}")
-	    // todo : show some error to user
-	}
-  ```  
-
-
-
-
-
-
-
+``` 
+**```Type```** : ```TextView```  
+**```yourRestrictionName```** : ```isRequire```  
+**```condition```** : ```this.text.toString().trim().isNotEmpty()```  
+	
+	
+	
+	
