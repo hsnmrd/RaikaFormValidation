@@ -8,10 +8,10 @@
 there are lots of boring ways to check form validation!  
 **this library** offers an easy validation for android apps.  
 the library will work with  
-- **```TextViews```**: TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
-- **```EditTexts```**: EditText, AppCompatEditText, TextInputEditText
-- **```CheckBoxs```**: CheckBox, AppCompatCheckBox, MaterialCheckBox
-- **```Lists```**: MutableList, List, ArrayList
+- **```TextViews```** TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
+- **```EditTexts```** EditText, AppCompatEditText, TextInputEditText
+- **```CheckBoxs```** CheckBox, AppCompatCheckBox, MaterialCheckBox
+- **```Collection```** MutableList, List, ArrayList
 - **```String```**  
 - **```Int```**  
 - **```Float```**  
@@ -25,7 +25,8 @@ the library will work with
 
 # Usage  
 
-- Step 1. Add the JitPack repository to your build file. Add it in your root build.gradle at the end of repositories  
+- Step 1. Add the JitPack repository to your build file.  
+Add it in your root build.gradle at the end of repositories.  
 ```groovy
 allprojects {
 	repositories {
@@ -42,48 +43,66 @@ dependencies {
 ```  
   
 - Step 3. use ```FormValidation``` **class** and ```addConstraint```, ```isValidate``` **functions**.   
-  here is an example:
 ```kotlin
 FormValidation()
-	.addLimit(
-	    type = FormValidationType.WithRequiredLimit(),
-	    target = this.iet_activity_root_first_name,
-	    message = "first name is required"
-	)
-	.onValidateFailed {
-	    Log.e("error", "${it.message} with type: ${it.type}")
-	    // todo : show some error to user
+	.addConstraint(etFirstName) {
+	    isRequire {
+		// todo : control error
+	    }
+	}
+	.addConstraint(etEmail) {
+	    isEmail {
+		// todo : control error
+	    }
 	}
 	.isValidate {
-	    // todo : form is valid
+
 	}
 ```
   
   
 # Functions  
-#### 1. addLimit
+#### 1. addConstraint
 ```kotlin
-fun <T> addLimit(
-        type: FormValidationType,
-        target: T,
-        targetError: T? = null,
-        message: String,
-    )
+fun <T> addConstraint(
+	target: T,
+	type: T.() -> Unit,
+): FormValidation {
+	validationList.add(FormValidationModel(target))
+	type(target)
+	return this
+}
 ```
     
-
 ### Params  
-#### 1-1. ```type```: there are some const filter types  
-- ```WithNotNullLimit```: (for ```String```) check if String is null
-- ```WithCheckedLimit```: (for ```checkbox```) check if checkbox is checked
-- ```WithRequiredLimit```: check if field has value
-- ```WithMinLengthLimit```: check if field has minimum limit character
-- ```WithMaxLengthLimit```: check if field has maximum limit character
-- ```WithEqualLengthLimit```: check if field has spesefic length
-- ```WithValidEmailLimit```: check if email is valid 
-- ```WithConfirmLimit```: (for ```confirm password``` or ```confirm email```) check if field value is same as passed data 
-- ```WithCustomLimit```: make your own filter
+- ```target``` pass the **target** you want to **limit**.
+- ```type``` some **restrictions** are available due to the target passed.  
+ 
+ 
+### Some restrictions  
+- ```EditText```, ```TextView```    
+	**```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  **```isContaining {}```**  
 
+- ```String```    
+	**```isNotNull {}```**  **```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  
+
+- ```Collection```    
+	**```isRequire {}```**  
+	
+	
+- ```Int```    
+	**```isNotNull {}```**  **```isAtMost {}```**  **```isLessThan {}```**  **```isAtLeast {}```**  **```isGreaterThan {}```**  **```isIn {}```**  **```isEqual {}```**  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 #### error for each limit  
 all these **types** have a ```lambda```, which is ```nullable``` and it helps to show **customize error** for each limit.  
