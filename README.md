@@ -45,17 +45,18 @@ dependencies {
   here is an example:
 ```kotlin
 FormValidation()
-	.addLimit(
-	    type = FormValidationType.WithRequiredLimit(),
-	    target = this.iet_activity_root_first_name,
-	    message = "first name is required"
-	)
-	.onValidateFailed {
-	    Log.e("error", "${it.message} with type: ${it.type}")
-	    // todo : show some error to user
+	.addConstraint(this.iet_activity_root_first_name) {
+	    isRequire {
+		// todo : control error
+	    }
+	}
+	.addConstraint(this.iet_activity_root_email) {
+	    isEmail {
+		// todo : control error
+	    }
 	}
 	.isValidate {
-	    // todo : form is valid
+
 	}
 ```
   
