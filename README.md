@@ -117,10 +117,20 @@ if there is a **type** which is *not supported*, here is a way to implement your
 	**```checkConstraintResult```'s** callback will call if the passed argument (```condition```) is **false**.  
 	so **improve** your restriction by making a **lambda** which is called **```errorListener```** as shown in below and call it when condition result is **false**.  
 ```kotlin
-Type.yourRestrictions(errorListener: () -> Unit) {
+fun Type.yourRestrictionName(errorListener: () -> Unit) {
     checkConstraintResult(condition) { errorListener() }
 }  
-```
+```  
+
+for more explanation check one of written restriction.  
+``` kotlin
+fun TextView.isRequire(errorListener: () -> Unit) {
+    checkConstraintResult(this.text.toString().trim().isNotEmpty()) { errorListener() }
+}
+``` 
+**```Type```** : ```TextView```  
+**```yourRestrictionName```** : ```isRequire```  
+**```condition```** : ```this.text.toString().trim().isNotEmpty()```  
 	
 	
 	
