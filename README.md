@@ -34,7 +34,7 @@ allprojects {
 - Step 2. Add the dependency
 ```groovy
 dependencies {
-	implementation 'com.github.hsnmrd:RaikaFormValidation:Tag'
+	implementation 'com.github.hsnmrd:RaikaFormValidation:0.0.1'
 }
 ```  
   
