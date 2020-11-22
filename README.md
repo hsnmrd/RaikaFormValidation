@@ -99,92 +99,18 @@ fun <T> addConstraint(
 	
 	
 
----------- 
 #### 2. ```isValidate```: check if the form is valid	 
 ```kotlin
 fun isValidate(listener: () -> Unit) {}
 ```  
 
 ---------- 
----------- 
----------- 
+	
+	
+# Supporting Additional target  
+if there is a **type** which is not supported, here is a way to implement your custom **Restrictions**.  
+- Step 1. make a kotlin file
 	
 	
 	
 	
-	
-	
-
-#### error for each limit  
-all these **types** have a ```lambda```, which is ```nullable``` and it helps to show **customize error** for each limit.  
-by passing ```lambda```, ```onValidateFailed``` function won't call for that specific **limit**.  
-here is an example:
-```kotlin
-.addLimit(
-    type = FormValidationType.WithRequiredLimit {
-    	// here show specific error for this filter - has access to [it.type] and [it.message] and [it.targetView] 
-	this.til_activity_root_first_name.isErrorEnabled = true
-	this.til_activity_root_first_name.error = it.message
-    },
-    target = this.iet_activity_root_first_name,
-    message = "first name is required"
-)
-```  
-
-#### 1-2. ```target```: a field that needs to have a constraint
-
-
-#### 1-3. ```targetError```: if an error is going to be shown on a different target view, then ```targetError``` will be useful.  
-it's a nullable argument, so if ```target``` is equal to ```targetError```, then there is no need to pass ```targetError```. 
-by passing ```target``` without ```targetError```, ```targetError``` will get ```target``` value. 
-here is an example, with different ```target``` and ```targetError```
-```kotlin
-.addLimit(
-    type = FormValidationType.WithRequiredLimit(),
-    target = this.iet_activity_root_first_name, // passed TextInputEditText
-    targetError = this.til_activity_root_first_name, // passed TextInputLayout
-    message = "first name is required"
-)
-```  
-
-#### 1-4. ```message```: pass your error message 
-
-
-
-
-
-
-
-
-----------  
-  
-  
-#### 2. onValidateFailed  
-```kotlin
-fun onValidateFailed(customUI: ((FormValidationListener) -> Unit)? = null): FormValidation {
-	this.customUI = customUI
-	return this
-}
-```
-handle errors with **onValidateFailed** function  
-as mentioned in [1-1](https://github.com/hsnmrd/RaikaFormValidation#1-1-type-there-are-some-const-filter-types) this function will call **if** the lambda of ```type``` argument didn't passed.  
-```type```, ```targetview```, ```message``` is accessable in this function.  
-  ```kotlin
-  FormValidation()
-	.addLimit(
-	    type = FormValidationType.WithRequiredLimit(),
-	    target = this.iet_activity_root_first_name,
-	    message = "first name is required"
-	)
-	.onValidateFailed {
-	    Log.e("error", "${it.message} with type: ${it.type}")
-	    // todo : show some error to user
-	}
-  ```  
-
-
-
-
-
-
-
