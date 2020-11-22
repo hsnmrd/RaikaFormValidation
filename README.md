@@ -77,19 +77,24 @@ fun <T> addConstraint(
  
  
 ### Restrictions  
-- ```EditText```, ```TextView```    
+- ```EditText```, ```TextView```   
+
 	**```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  **```isContaining {}```**  
 
 - ```String```    
+
 	**```isNotNull {}```**  **```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  
 
 - ```Collection```    
+
 	**```isRequire {}```**  
 	
 - ```CheckBox```    
+
 	**```isChecked {}```**  
 	
 - ```Int``` ```Float``` ```Double``` ```Date```
+
 	**```isNotNull {}```**  **```isAtMost {}```**  **```isLessThan {}```**  **```isAtLeast {}```**  **```isGreaterThan {}```**  **```isIn {}```**  **```isEqual {}```**  
 	
 	
