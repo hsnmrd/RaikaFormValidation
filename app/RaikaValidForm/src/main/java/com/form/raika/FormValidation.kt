@@ -1,4 +1,4 @@
-package raika.formvalidation.com
+package com.form.raika
 
 class FormValidation {
 

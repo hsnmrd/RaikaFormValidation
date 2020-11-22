@@ -1,6 +1,6 @@
-package raika.formvalidation.com.constraints
+package com.form.raika.constraints
 
-import raika.formvalidation.com.checkConstraintResult
+import com.form.raika.checkConstraintResult
 import java.util.*
 
 fun Date.isAtMost(max: Date, errorListener: () -> Unit) {

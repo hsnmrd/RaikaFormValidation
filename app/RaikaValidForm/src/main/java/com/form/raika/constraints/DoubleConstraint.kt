@@ -1,6 +1,6 @@
-package raika.formvalidation.com.constraints
+package com.form.raika.constraints
 
-import raika.formvalidation.com.checkConstraintResult
+import com.form.raika.checkConstraintResult
 
 fun Double?.isNotNull(errorListener: () -> Unit) {
     checkConstraintResult(this != null) { errorListener() }

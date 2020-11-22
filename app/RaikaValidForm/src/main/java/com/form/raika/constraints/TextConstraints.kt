@@ -1,7 +1,7 @@
-package raika.formvalidation.com.constraints
+package com.form.raika.constraints
 
 import android.widget.TextView
-import raika.formvalidation.com.checkConstraintResult
+import com.form.raika.checkConstraintResult
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
