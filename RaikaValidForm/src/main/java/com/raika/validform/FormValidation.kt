@@ -16,34 +16,28 @@ class FormValidation {
     }
 
     fun isValidate(listener: () -> Unit) {
-        var isValid = true
-        validationList.forEach loop@{ validationItem ->
+        validationList.forEach { validationItem ->
             validationItem.type.forEach {
-                isValid = (it.constraint.also { result ->
-                        if (!result) {
-                            it.notValidListener?.invoke()
-                        }
-                    })
-                if (!isValid) {
-                    isValid = false
-                    return@loop
+                it.constraint.also { result ->
+                    if (!result) {
+                        it.notValidListener?.invoke()
+                        return
+                    }
                 }
             }
         }
 
         validationList.clear()
-        if (isValid) {
-            listener()
-        }
+        listener()
     }
 
     data class FormValidationModel<T>(
         var target: T,
-        var type: MutableList<WithConstraint> = emptyList<WithConstraint>().toMutableList()
+        var type: MutableList<WithConstraint> = emptyList<WithConstraint>().toMutableList(),
     )
 
     data class WithConstraint(
-        var constraint:  Boolean,
+        var constraint: Boolean,
         var notValidListener: (() -> Unit)? = null,
     )
 

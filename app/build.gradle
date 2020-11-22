@@ -45,6 +45,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation project(path: ':RaikaValidForm')
+    implementation 'com.github.hsnmrd:RaikaFormValidation:v0.0.1'
+//    implementation project(path: ':RaikaValidForm')
 
 }

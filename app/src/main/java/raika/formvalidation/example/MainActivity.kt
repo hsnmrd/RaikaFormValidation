@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                     isEmail {
                         // todo : control error
                     }
+                    isRequire {
+                        // todo : control error
+                    }
                 }
                 .isValidate {
 
