@@ -11,7 +11,7 @@ the library will work with
 - **```TextViews```** TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
 - **```EditTexts```** EditText, AppCompatEditText, TextInputEditText
 - **```CheckBoxs```** CheckBox, AppCompatCheckBox, MaterialCheckBox
-- **```Lists```** MutableList, List, ArrayList
+- **```Collection```** MutableList, List, ArrayList
 - **```String```**  
 - **```Int```**  
 - **```Float```**  
@@ -74,11 +74,35 @@ fun <T> addConstraint(
 }
 ```
     
-
 ### Params  
-#### 1-1. ```target```: pass the **target** you want to **limit**.
-#### 1-2. ```type```: some **constraint** are available due to the target passed.
+- ```target``` pass the **target** you want to **limit**.
+- ```type``` some **restrictions** are available due to the target passed.  
+ 
+ 
+### Some restrictions  
+- ```EditText```, ```TextView```    
+	**```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  **```isContaining {}```**  
 
+- ```String```    
+	**```isNotNull {}```**  **```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  
+
+- ```Collection```    
+	**```isRequire {}```**  
+	
+	
+- ```Int```    
+	**```isNotNull {}```**  **```isAtMost {}```**  **```isLessThan {}```**  **```isAtLeast {}```**  **```isGreaterThan {}```**  **```isIn {}```**  **```isEqual {}```**  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 #### error for each limit  
 all these **types** have a ```lambda```, which is ```nullable``` and it helps to show **customize error** for each limit.  
