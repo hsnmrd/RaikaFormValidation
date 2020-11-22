@@ -1,4 +1,3 @@
 include ':RaikaValidForm'
-include ':app:RaikaValidFormA'
 include ':app'
 rootProject.name = "RaikaFormValidation"
