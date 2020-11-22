@@ -46,3 +46,7 @@ fun Date.isGreaterThan(min: Long, errorListener: () -> Unit) {
 fun Date.isIn(min: Long, max: Long, errorListener: () -> Unit) {
     checkConstraintResult(this in Date(min)..Date(max)) { errorListener() }
 }
+
+fun Date.isEqual(date: Date, errorListener: () -> Unit) {
+    checkConstraintResult(this == date) { errorListener() }
+}
