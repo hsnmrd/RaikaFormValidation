@@ -19,9 +19,10 @@ the library will work with
 - **```Date```**  
 
 # Contents
-- [how to use](https://github.com/hsnmrd/RaikaFormValidation#usage)  
-- [functions](https://github.com/hsnmrd/RaikaFormValidation#functions)  
-  [error for each limit](https://github.com/hsnmrd/RaikaFormValidation#error-for-each-limit)  
+- [How To Use](https://github.com/hsnmrd/RaikaFormValidation#usage)  
+- [Functions](https://github.com/hsnmrd/RaikaFormValidation#functions)  
+- [Restrictions](https://github.com/hsnmrd/RaikaFormValidation#restrictions) 
+- [Supporting Additional Target](https://github.com/hsnmrd/RaikaFormValidation#supporting-additional-target) 
 
 
 # Usage  
@@ -110,7 +111,7 @@ fun isValidate(listener: () -> Unit) {}
 ---------- 
 	
 	
-# Supporting Additional target  
+# Supporting Additional Target  
 if there is a **type** which is *not supported*, here is a way to implement your custom **restriction**.  
 - Step 1. make a **kotlin file**.  
 - Step 2. make your **custom restriction** by using **```checkConstraintResult ()```** function and pass a **```condition```** as an argument.  
