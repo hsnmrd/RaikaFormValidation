@@ -16,6 +16,7 @@ the library will work with
 - **```Int```**  
 - **```Float```**  
 - **```Double```**  
+- **```Date```**  
 
 # Contents
 - [how to use](https://github.com/hsnmrd/RaikaFormValidation#usage)  
@@ -67,11 +68,7 @@ FormValidation()
 fun <T> addConstraint(
 	target: T,
 	type: T.() -> Unit,
-): FormValidation {
-	validationList.add(FormValidationModel(target))
-	type(target)
-	return this
-}
+): FormValidation {}
 ```
     
 ### Params  
@@ -79,7 +76,7 @@ fun <T> addConstraint(
 - ```type``` some **restrictions** are available due to the target passed.  
  
  
-### Some restrictions  
+### Restrictions  
 - ```EditText```, ```TextView```    
 	**```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  **```isContaining {}```**  
 
@@ -89,12 +86,18 @@ fun <T> addConstraint(
 - ```Collection```    
 	**```isRequire {}```**  
 	
+- ```CheckBox```    
+	**```isChecked {}```**  
 	
-- ```Int```    
+- ```Int``` ```Float``` ```Double``` ```Date```
 	**```isNotNull {}```**  **```isAtMost {}```**  **```isLessThan {}```**  **```isAtLeast {}```**  **```isGreaterThan {}```**  **```isIn {}```**  **```isEqual {}```**  
 	
 	
-	
+
+#### 2. isValidate  
+```kotlin
+fun isValidate(listener: () -> Unit) {}
+```
 	
 	
 	
