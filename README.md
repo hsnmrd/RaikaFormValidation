@@ -8,10 +8,10 @@
 there are lots of boring ways to check form validation!  
 **this library** offers an easy validation for android apps.  
 the library will work with  
-- **```TextViews```**: TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
-- **```EditTexts```**: EditText, AppCompatEditText, TextInputEditText
-- **```CheckBoxs```**: CheckBox, AppCompatCheckBox, MaterialCheckBox
-- **```Lists```**: MutableList, List, ArrayList
+- **```TextViews```** TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
+- **```EditTexts```** EditText, AppCompatEditText, TextInputEditText
+- **```CheckBoxs```** CheckBox, AppCompatCheckBox, MaterialCheckBox
+- **```Lists```** MutableList, List, ArrayList
 - **```String```**  
 - **```Int```**  
 - **```Float```**  
@@ -25,7 +25,8 @@ the library will work with
 
 # Usage  
 
-- Step 1. Add the JitPack repository to your build file. Add it in your root build.gradle at the end of repositories  
+- Step 1. Add the JitPack repository to your build file.  
+Add it in your root build.gradle at the end of repositories.  
 ```groovy
 allprojects {
 	repositories {
@@ -75,7 +76,8 @@ fun <T> addConstraint(
     
 
 ### Params  
-#### 1-1. ```target```: pass the **target** you want to **limit**
+#### 1-1. ```target```: pass the **target** you want to **limit**.
+#### 1-2. ```type```: some **constraint** are available due to the target passed.
 
 
 #### error for each limit  
