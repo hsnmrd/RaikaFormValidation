@@ -43,8 +43,8 @@ dependencies {
   
 - Step 3. use ```FormValidation``` **class** and ```addConstraint```, ```isValidate``` **functions**.   
   here is an example:
-  ```kotlin
-  FormValidation()
+```kotlin
+FormValidation()
 	.addLimit(
 	    type = FormValidationType.WithRequiredLimit(),
 	    target = this.iet_activity_root_first_name,
@@ -57,7 +57,7 @@ dependencies {
 	.isValidate {
 	    // todo : form is valid
 	}
-  ```
+```
   
   
 # Functions  
