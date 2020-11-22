@@ -3,15 +3,19 @@
 
 [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
 ![Language](https://img.shields.io/badge/language-Kotlin-red.svg)
+[![](https://jitpack.io/v/hsnmrd/RaikaFormValidation.svg)](https://jitpack.io/#hsnmrd/RaikaFormValidation)
 
 there are lots of boring ways to check form validation!  
-**this library** offers an easy form validation for android apps.  
+**this library** offers an easy validation for android apps.  
 the library will work with  
-- **TextViews**: TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
-- **EditTexts**: EditText, AppCompatEditText, TextInputEditText
-- **CheckBoxs**: CheckBox, AppCompatCheckBox, MaterialCheckBox
-- **Lists**: MutableList, List, ArrayList
-- **string**  
+- **```TextViews```**: TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
+- **```EditTexts```**: EditText, AppCompatEditText, TextInputEditText
+- **```CheckBoxs```**: CheckBox, AppCompatCheckBox, MaterialCheckBox
+- **```Lists```**: MutableList, List, ArrayList
+- **```String```**  
+- **```Int```**  
+- **```Float```**  
+- **```Double```**  
 
 # Contents
 - [how to use](https://github.com/hsnmrd/RaikaFormValidation#usage)  
@@ -20,12 +24,24 @@ the library will work with
 
 
 # Usage  
-- first add dependency to your build.gradle file  
-	```groovy
-	implementation '-'
-	```
+
+- Step 1. Add the JitPack repository to your build file. Add it in your root build.gradle at the end of repositories  
+```groovy
+allprojects {
+	repositories {
+		..
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+- Step 2. Add the dependency
+```groovy
+dependencies {
+	implementation 'com.github.hsnmrd:RaikaFormValidation:0.0.1'
+}
+```  
   
-- then use ```FormValidation``` **class** with ```addLimit``` & ```isValidate``` & ```onValidateFailed``` **functions**.   
+- Step 3. use ```FormValidation``` **class** and ```addConstraint```, ```isValidate``` **functions**.   
   here is an example:
   ```kotlin
   FormValidation()
