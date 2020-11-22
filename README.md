@@ -111,10 +111,11 @@ fun isValidate(listener: () -> Unit) {}
 	
 	
 # Supporting Additional target  
-if there is a **type** which is not supported, here is a way to implement your custom **Restrictions**.  
-- Step 1. make a kotlin file.  
-- Step 2. make your custom Restrictions by using ```checkConstraintResult ()``` function and pass a ```condition``` as an argument.  
-	```checkConstraintResult```'s callback will call if the passed argument (```condition```) is false.  
+if there is a **type** which is *not supported*, here is a way to implement your custom **restriction**.  
+- Step 1. make a **kotlin file**.  
+- Step 2. make your **custom restriction** by using **```checkConstraintResult ()```** function and pass a **```condition```** as an argument.  
+	```checkConstraintResult```'s callback will call if the passed argument (```condition```) is **false**.
+	so **improve** your restriction by making a **lambda** which is called **```errorListener```** as shown in below and call it when condition result is **false**.  
 ```kotlin
 Type.yourRestrictions(errorListener: () -> Unit) {
     checkConstraintResult(condition) { errorListener() }
