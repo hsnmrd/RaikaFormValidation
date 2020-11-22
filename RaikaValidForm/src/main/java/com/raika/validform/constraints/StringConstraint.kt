@@ -1,6 +1,6 @@
-package com.form.raika.constraints
+package com.raika.validform.constraints
 
-import com.form.raika.checkConstraintResult
+import com.raika.validform.checkConstraintResult
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 

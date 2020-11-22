@@ -1,4 +1,4 @@
-package com.form.raika
+package com.raika.validform
 
 class FormValidation {
 
