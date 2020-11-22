@@ -55,6 +55,9 @@ FormValidation()
 	    isEmail {
 		// todo : control error
 	    }
+	    isRequire {
+		// todo : control error
+	    }
 	}
 	.isValidate {
 
@@ -109,7 +112,14 @@ fun isValidate(listener: () -> Unit) {}
 	
 # Supporting Additional target  
 if there is a **type** which is not supported, here is a way to implement your custom **Restrictions**.  
-- Step 1. make a kotlin file
+- Step 1. make a kotlin file.  
+- Step 2. make your custom Restrictions by using ```checkConstraintResult ()``` function and pass a ```condition``` as an argument.  
+	```checkConstraintResult```'s callback will call if the passed argument (```condition```) is false.  
+```kotlin
+Type.yourRestrictions(errorListener: () -> Unit) {
+    checkConstraintResult(condition) { errorListener() }
+}  
+```
 	
 	
 	
