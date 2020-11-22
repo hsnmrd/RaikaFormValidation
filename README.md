@@ -3,6 +3,7 @@
 
 [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
 ![Language](https://img.shields.io/badge/language-Kotlin-red.svg)
+[![](https://jitpack.io/v/hsnmrd/RaikaFormValidation.svg)](https://jitpack.io/#hsnmrd/RaikaFormValidation)
 
 there are lots of boring ways to check form validation!  
 **this library** offers an easy form validation for android apps.  
