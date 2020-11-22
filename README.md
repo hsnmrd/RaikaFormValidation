@@ -45,12 +45,12 @@ dependencies {
 - Step 3. use ```FormValidation``` **class** and ```addConstraint```, ```isValidate``` **functions**.   
 ```kotlin
 FormValidation()
-	.addConstraint(this.iet_activity_root_first_name) {
+	.addConstraint(etFirstName) {
 	    isRequire {
 		// todo : control error
 	    }
 	}
-	.addConstraint(this.iet_activity_root_email) {
+	.addConstraint(etEmail) {
 	    isEmail {
 		// todo : control error
 	    }
