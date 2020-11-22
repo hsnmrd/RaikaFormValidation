@@ -63,7 +63,7 @@ FormValidation()
   
   
 # Functions  
-#### 1. addConstraint
+#### 1. ```addConstraint```: add the Restriction to specific target  
 ```kotlin
 fun <T> addConstraint(
 	target: T,
@@ -76,7 +76,7 @@ fun <T> addConstraint(
 - ```type``` some **restrictions** are available due to the target passed.  
  
  
-### Restrictions  
+### Restrictions
 - ```EditText```, ```TextView```   
 
 	**```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  **```isContaining {}```**  
@@ -99,12 +99,15 @@ fun <T> addConstraint(
 	
 	
 
-#### 2. isValidate  
+---------- 
+#### 2. ```isValidate```: check if the form is valid	 
 ```kotlin
 fun isValidate(listener: () -> Unit) {}
-```
-	
-	
+```  
+
+---------- 
+---------- 
+---------- 
 	
 	
 	
