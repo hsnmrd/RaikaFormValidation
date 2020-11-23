@@ -84,15 +84,16 @@ fun <T> addConstraint(
 ### Restrictions
 - ```EditText```, ```TextView```   
 
-	**```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  **```isContaining {}```**  
+	**```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isEqual {}```**  **```isContaining {}```**  **```isContainingNumber {}```**  **```isContainingUpperCase {}```**  
 
 - ```String```    
 
-	**```isNotNull {}```**  **```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isConfirm {}```**  
+	**```isNotNull {}```**  **```isRequire {}```**  **```isEmail {}```**  **```isLengthAtMost {}```**  **```isLengthLessThan {}```**  **```isLengthGreaterThan {}```**  **```isLengthIn {}```**  **```isLengthEqual {}```**  **```isContaining {}```**  **```isEqual {}```** **```isContainingNumber {}```**  **```isContainingUpperCase {}```**  
+
 
 - ```Collection```    
 
-	**```isRequire {}```**  
+	**```isRequire {}```**  **```isSizeAtMost {}```**  **```isSizeLessThan {}```**  **```isSizeAtLeast {}```**  **```isSizeGreaterThan {}```**  **```isSizeIn {}```**  **```isSizeEqual {}```**  **```isNotNull {}```**  
 	
 - ```CheckBox```    
 
