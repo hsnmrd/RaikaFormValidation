@@ -1,5 +1,6 @@
 package com.raika.validform.constraints
 
+import android.widget.TextView
 import com.raika.validform.checkConstraintResult
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -43,6 +44,37 @@ fun String.isLengthEqual(length: Int, errorListener: () -> Unit) {
     checkConstraintResult(this.trim().length == length) { errorListener() }
 }
 
-fun String.isContaining(value: String, errorListener: () -> Unit) {
-    checkConstraintResult(this.trim().contains(value)) { errorListener() }
+fun String.isContainingNumber(errorListener: () -> Unit) {
+    checkConstraintResult(this.trim().contains(Regex(".*\\d.*"))) { errorListener() }
+}
+
+
+fun String.isContainingUpperCase(errorListener: () -> Unit) {
+    checkConstraintResult(this.trim().contains(Regex(".*[A-Z]"))) { errorListener() }
+}
+
+fun String.isContaining(vararg value: String, errorListener: () -> Unit) {
+    var isOneItemEqual = false
+    run breaker@{
+        value.forEach {
+            isOneItemEqual = this.trim().contains(it)
+            if (isOneItemEqual) {
+                return@breaker
+            }
+        }
+    }
+    checkConstraintResult(isOneItemEqual) { errorListener() }
+}
+
+fun String.isEqual(vararg value: String, errorListener: () -> Unit) {
+    var isOneItemEqual = false
+    run breaker@{
+        value.forEach {
+            isOneItemEqual = this.trim() == it.trim()
+            if (isOneItemEqual) {
+                return@breaker
+            }
+        }
+    }
+    checkConstraintResult(isOneItemEqual) { errorListener() }
 }

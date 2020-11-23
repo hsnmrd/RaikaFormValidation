@@ -47,9 +47,26 @@ fun TextView.isLengthEqual(length: Int, errorListener: () -> Unit) {
         .trim().length == length) { errorListener() }
 }
 
-fun TextView.isContaining(value: String, errorListener: () -> Unit) {
-    checkConstraintResult(this.text.toString().trim()
-        .contains(value)) { errorListener() }
+fun TextView.isContainingNumber(errorListener: () -> Unit) {
+    checkConstraintResult(this.text.toString().trim().contains(Regex(".*\\d.*"))) { errorListener() }
+}
+
+
+fun TextView.isContainingUpperCase(errorListener: () -> Unit) {
+    checkConstraintResult(this.text.toString().trim().contains(Regex(".*[A-Z]"))) { errorListener() }
+}
+
+fun TextView.isContaining(vararg value: String, errorListener: () -> Unit) {
+    var isOneItemContaining = false
+    run breaker@{
+        value.forEach {
+            isOneItemContaining = this.text.toString().trim().contains(it)
+            if (isOneItemContaining) {
+                return@breaker
+            }
+        }
+    }
+    checkConstraintResult(isOneItemContaining) { errorListener() }
 }
 
 fun TextView.isEqual(vararg value: String, errorListener: () -> Unit) {
