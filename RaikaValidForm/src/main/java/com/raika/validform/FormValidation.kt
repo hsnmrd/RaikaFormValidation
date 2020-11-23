@@ -16,19 +16,24 @@ class FormValidation {
     }
 
     fun isValidate(listener: () -> Unit) {
+        var isValid = true
         validationList.forEach { validationItem ->
-            validationItem.type.forEach {
-                it.constraint.also { result ->
-                    if (!result) {
-                        it.notValidListener?.invoke()
-                        return
+            run process@{
+                validationItem.type.forEach {
+                    it.constraint.also { result ->
+                        isValid = result.and(isValid)
+                        if (!result) {
+                            it.notValidListener?.invoke()
+                            isValid = false
+                            return@process
+                        }
                     }
+
                 }
             }
         }
-
         validationList.clear()
-        listener()
+        if (isValid) listener()
     }
 
     data class FormValidationModel<T>(

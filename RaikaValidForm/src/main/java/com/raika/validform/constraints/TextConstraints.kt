@@ -52,6 +52,15 @@ fun TextView.isContaining(value: String, errorListener: () -> Unit) {
         .contains(value)) { errorListener() }
 }
 
-fun TextView.isConfirm(value: String, errorListener: () -> Unit) {
-    checkConstraintResult(this.text.toString().trim() == value) { errorListener() }
+fun TextView.isEqual(vararg value: String, errorListener: () -> Unit) {
+    var isOneItemEqual = false
+    run breaker@{
+        value.forEach {
+            isOneItemEqual = this.text.toString().trim() == it.trim()
+            if (isOneItemEqual) {
+                return@breaker
+            }
+        }
+    }
+    checkConstraintResult(isOneItemEqual) { errorListener() }
 }

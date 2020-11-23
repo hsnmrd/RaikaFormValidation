@@ -1,6 +1,7 @@
 package raika.formvalidation.example
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.raika.validform.FormValidation
 import com.raika.validform.constraints.isEmail
@@ -19,19 +20,22 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             FormValidation()
                 .addConstraint(etFirstName) {
                     isRequire {
+                        Log.e("FormValidation", "etFirstName-isRequire")
                         // todo : control error
                     }
                 }
                 .addConstraint(etEmail) {
-                    isEmail {
+                    isRequire {
+                        Log.e("FormValidation", "etEmail-isRequire")
                         // todo : control error
                     }
-                    isRequire {
+                    isEmail {
+                        Log.e("FormValidation", "etEmail-isEmail")
                         // todo : control error
                     }
                 }
                 .isValidate {
-
+                    Log.e("FormValidation", "is_validate")
                 }
         }
 
