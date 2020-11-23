@@ -41,7 +41,7 @@ allprojects {
 - Step 2. Add the dependency
 ```groovy
 dependencies {
-	implementation 'com.github.hsnmrd:RaikaFormValidation:version'
+	implementation 'com.github.hsnmrd:RaikaFormValidation:$version'
 }
 ```  
   
