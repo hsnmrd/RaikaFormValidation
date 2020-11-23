@@ -77,7 +77,7 @@ fun <T> addConstraint(
 ```
     
 ### Params  
-- ```target``` pass the **target** you want to **limit**.
+- ```target``` pass the **target** which is going to have **limit**.
 - ```type``` some **restrictions** are available due to the target passed.  
  
  
