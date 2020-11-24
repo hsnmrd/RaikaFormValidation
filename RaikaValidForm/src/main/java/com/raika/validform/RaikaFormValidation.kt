@@ -1,6 +1,6 @@
 package com.raika.validform
 
-class FormValidation {
+class RaikaFormValidation {
 
     companion object {
         var validationList = emptyList<FormValidationModel<*>>().toMutableList()
@@ -9,7 +9,7 @@ class FormValidation {
     fun <T> addConstraint(
         target: T,
         type: T.() -> Unit,
-    ): FormValidation {
+    ): RaikaFormValidation {
         validationList.add(FormValidationModel(target))
         type(target)
         return this

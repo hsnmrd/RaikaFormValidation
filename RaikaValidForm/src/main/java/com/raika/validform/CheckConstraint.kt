@@ -1,7 +1,7 @@
 package com.raika.validform
 
 fun checkConstraintResult(value: Boolean, errorListener: () -> Unit) {
-    FormValidation.validationList.lastOrNull()?.type?.add(FormValidation.WithConstraint(value) {
+    RaikaFormValidation.validationList.lastOrNull()?.type?.add(RaikaFormValidation.WithConstraint(value) {
         errorListener()
     })
 }
