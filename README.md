@@ -6,12 +6,12 @@
 [![](https://jitpack.io/v/hsnmrd/RaikaFormValidation.svg)](https://jitpack.io/#hsnmrd/RaikaFormValidation)
 
 there are lots of boring ways to check form validation!  
-**this library** offers an easy validation for android apps.  
+**this library** offers an easy way to validate form for android apps.  
 the library will work with  
-- **```TextViews```** TextView, AppCompatTextView, MultiAutoCompleteTextView, MaterialTextView
-- **```EditTexts```** EditText, AppCompatEditText, TextInputEditText
-- **```CheckBoxs```** CheckBox, AppCompatCheckBox, MaterialCheckBox
-- **```Collection```** MutableList, List, ArrayList
+- **```TextViews```**  
+- **```EditTexts```**  
+- **```CheckBoxs```**  
+- **```Collection```**  
 - **```String```**  
 - **```Int```**  
 - **```Float```**  
@@ -41,7 +41,7 @@ allprojects {
 - Step 2. Add the dependency
 ```groovy
 dependencies {
-	implementation 'com.github.hsnmrd:RaikaFormValidation:0.0.1'
+	implementation 'com.github.hsnmrd:RaikaFormValidation:$version'
 }
 ```  
   
@@ -77,7 +77,7 @@ fun <T> addConstraint(
 ```
     
 ### Params  
-- ```target``` pass the **target** you want to **limit**.
+- ```target``` pass the **target** which is going to have a **limit**.
 - ```type``` some **restrictions** are available due to the target passed.  
  
  
@@ -114,11 +114,10 @@ fun isValidate(listener: () -> Unit) {}
 	
 	
 # Supporting Additional Target  
-if there is a **type** which is *not supported*, here is a way to implement your custom **restriction**.  
-- Step 1. make a **kotlin file**.  
-- Step 2. make your **custom restriction** by using **```checkConstraintResult ()```** function and pass a **```condition```** as an argument.  
+if there is a **type** which is *not supported yet*, here is a way to implement your custom **restriction**.  
+- make your **custom restriction** by using **```checkConstraintResult ()```** function and pass a **```condition```** as an argument.  
 	**```checkConstraintResult```'s** callback will call if the passed argument (```condition```) is **false**.  
-	so **improve** your restriction by making a **lambda** which is called **```errorListener```** as shown in below and call it when condition result is **false**.  
+	so **improve** your restriction by making a **lambda** which is called **```errorListener```** as shown below and call it when the condition result is **false**.  
 ```kotlin
 fun Type.yourRestrictionName(errorListener: () -> Unit) {
     checkConstraintResult(condition) { errorListener() }
