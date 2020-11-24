@@ -1,4 +1,4 @@
-package raika.formvalidation.example
+package raika.formvalidation.com
 
 import android.os.Bundle
 import android.util.Log

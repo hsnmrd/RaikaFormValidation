@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "raika.formvalidation.example"
+        applicationId "raika.formvalidation.com"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -45,7 +45,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-//    implementation 'com.github.hsnmrd:RaikaFormValidation:0.0.1'
-    implementation project(path: ':RaikaValidForm')
+    implementation 'com.github.hsnmrd:RaikaFormValidation:1.0.0-alpha1'
+
+//    implementation project(path: ':RaikaValidForm')
 
 }
