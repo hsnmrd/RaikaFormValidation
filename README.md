@@ -45,9 +45,9 @@ dependencies {
 }
 ```  
   
-- Step 3. use ```FormValidation``` **class** and ```addConstraint```, ```isValidate``` **functions**.   
+- Step 3. use ```RaikaFormValidation``` **class** and ```addConstraint```, ```isValidate``` **functions**.   
 ```kotlin
-FormValidation()
+RaikaFormValidation()
 	.addConstraint(etFirstName) {
 	    isRequire {
 		// todo : control error
@@ -73,7 +73,7 @@ FormValidation()
 fun <T> addConstraint(
 	target: T,
 	type: T.() -> Unit,
-): FormValidation {}
+): RaikaFormValidation {}
 ```
     
 ### Params  
