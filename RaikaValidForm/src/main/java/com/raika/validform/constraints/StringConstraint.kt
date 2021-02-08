@@ -14,10 +14,12 @@ fun String.isRequire(errorListener: () -> Unit) {
 }
 
 fun String.isEmail(errorListener: () -> Unit) {
-    val expression = "^[\\w.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
-    val pattern: Pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
-    val matcher: Matcher = pattern.matcher(this.trim())
-    checkConstraintResult(matcher.matches()) { errorListener() }
+    if (this.trim().isNotEmpty()) {
+        val expression = "^[\\w.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
+        val pattern: Pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
+        val matcher: Matcher = pattern.matcher(this.trim())
+        checkConstraintResult(matcher.matches()) { errorListener() }
+    }
 }
 
 fun String.isLengthAtMost(max: Int, errorListener: () -> Unit) {

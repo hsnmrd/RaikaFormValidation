@@ -11,10 +11,12 @@ fun TextView.isRequire(errorListener: () -> Unit) {
 }
 
 fun TextView.isEmail(errorListener: () -> Unit) {
-    val expression = "^[\\w.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
-    val pattern: Pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
-    val matcher: Matcher = pattern.matcher(this.text.trim())
-    checkConstraintResult(matcher.matches()) { errorListener() }
+    if (this.text.trim().isNotEmpty()) {
+        val expression = "^[\\w.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
+        val pattern: Pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
+        val matcher: Matcher = pattern.matcher(this.text.trim())
+        checkConstraintResult(matcher.matches()) { errorListener() }
+    }
 }
 
 fun TextView.isLengthAtMost(max: Int, errorListener: () -> Unit) {
