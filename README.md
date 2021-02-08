@@ -1,9 +1,9 @@
-# FormValidation
+# RaikaFormValidation
 
 
 [![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
 ![Language](https://img.shields.io/badge/language-Kotlin-red.svg)
-[![](https://jitpack.io/v/hsnmrd/RaikaFormValidation.svg)](https://jitpack.io/#hsnmrd/RaikaFormValidation)
+[![](https://jitpack.io/v/hsnmrd/RaikaFormValidation.svg)](https://jitpack.io/#hsnmrd/RaikaFormValidation)  
 
 there are lots of boring ways to check form validation!  
 **this library** offers an easy way to validate form for android apps.  
@@ -45,9 +45,9 @@ dependencies {
 }
 ```  
   
-- Step 3. use ```FormValidation``` **class** and ```addConstraint```, ```isValidate``` **functions**.   
+- Step 3. use ```RaikaFormValidation``` **class** and ```addConstraint```, ```isValidate``` **functions**.   
 ```kotlin
-FormValidation()
+RaikaFormValidation()
 	.addConstraint(etFirstName) {
 	    isRequire {
 		// todo : control error
@@ -73,7 +73,7 @@ FormValidation()
 fun <T> addConstraint(
 	target: T,
 	type: T.() -> Unit,
-): FormValidation {}
+): RaikaFormValidation {}
 ```
     
 ### Params  
