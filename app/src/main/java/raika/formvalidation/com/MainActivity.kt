@@ -1,9 +1,8 @@
 package raika.formvalidation.com
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.raika.validform.FormValidation
+import com.raika.validform.RaikaFormValidation
 import com.raika.validform.constraints.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,13 +15,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val etEmail = this.iet_activity_root_email
 
         this.btn_activity_confirm_password.setOnClickListener {
-            FormValidation()
+            RaikaFormValidation()
                 .addConstraint(etFirstName) {
                     isRequire {
                         // todo : control error
                     }
-                    isContainingNumber { Log.e("MainActivity", "isContainingNumber-false") }
-                    isContainingUpperCase { Log.e("MainActivity", "isContainingUpperCase-false") }
+                    isContainingNumber {
+                        // todo : control error
+                    }
+                    isContainingUpperCase {
+                        // todo : control error
+                    }
                 }
                 .addConstraint(etEmail) {
                     isRequire {
@@ -33,7 +36,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                     }
                 }
                 .isValidate {
-
+                    // todo : form is valid
                 }
         }
 
