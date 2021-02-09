@@ -120,14 +120,14 @@ if there is a **type** which is *not supported yet*, here is a way to implement 
 	so **improve** your restriction by making a **lambda** which is called **```errorListener```** as shown below and call it when the condition result is **false**.  
 ```kotlin
 fun Type.yourRestrictionName(errorListener: () -> Unit) {
-    checkConstraintResult(condition) { errorListener() }
+    checkConstraintResult(condition) { errorListener?.invoke() }
 }  
 ```  
 
 for more explanation check one of written restriction.  
 ``` kotlin
 fun TextView.isRequire(errorListener: () -> Unit) {
-    checkConstraintResult(this.text.toString().trim().isNotEmpty()) { errorListener() }
+    checkConstraintResult(this.text.toString().trim().isNotEmpty()) { errorListener?.invoke() }
 }
 ``` 
 **```Type```** : ```TextView```  

@@ -5,60 +5,60 @@ import com.raika.validform.checkConstraintResult
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-fun TextView.isRequire(errorListener: () -> Unit) {
+fun TextView.isRequire(errorListener: (() -> Unit)? = null) {
     checkConstraintResult(this.text.toString().trim()
-        .isNotEmpty()) { errorListener() }
+        .isNotEmpty()) { errorListener?.invoke() }
 }
 
-fun TextView.isEmail(errorListener: () -> Unit) {
+fun TextView.isEmail(errorListener: (() -> Unit)? = null) {
     if (this.text.trim().isNotEmpty()) {
         val expression = "^[\\w.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
         val pattern: Pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
         val matcher: Matcher = pattern.matcher(this.text.trim())
-        checkConstraintResult(matcher.matches()) { errorListener() }
+        checkConstraintResult(matcher.matches()) { errorListener?.invoke() }
     }
 }
 
-fun TextView.isLengthAtMost(max: Int, errorListener: () -> Unit) {
+fun TextView.isLengthAtMost(max: Int, errorListener: (() -> Unit)? = null) {
     checkConstraintResult(this.text.toString()
-        .trim().length <= max) { errorListener() }
+        .trim().length <= max) { errorListener?.invoke() }
 }
 
-fun TextView.isLengthLessThan(max: Int, errorListener: () -> Unit) {
+fun TextView.isLengthLessThan(max: Int, errorListener: (() -> Unit)? = null) {
     checkConstraintResult(this.text.toString()
-        .trim().length < max) { errorListener() }
+        .trim().length < max) { errorListener?.invoke() }
 }
 
-fun TextView.isLengthAtLeast(min: Int, errorListener: () -> Unit) {
+fun TextView.isLengthAtLeast(min: Int, errorListener: (() -> Unit)? = null) {
     checkConstraintResult(this.text.toString()
-        .trim().length >= min) { errorListener() }
+        .trim().length >= min) { errorListener?.invoke() }
 }
 
-fun TextView.isLengthGreaterThan(min: Int, errorListener: () -> Unit) {
+fun TextView.isLengthGreaterThan(min: Int, errorListener: (() -> Unit)? = null) {
     checkConstraintResult(this.text.toString()
-        .trim().length >= min) { errorListener() }
+        .trim().length >= min) { errorListener?.invoke() }
 }
 
-fun TextView.isLengthIn(min: Int, max: Int, errorListener: () -> Unit) {
+fun TextView.isLengthIn(min: Int, max: Int, errorListener: (() -> Unit)? = null) {
     checkConstraintResult(this.text.toString()
-        .trim().length in min..max) { errorListener() }
+        .trim().length in min..max) { errorListener?.invoke() }
 }
 
-fun TextView.isLengthEqual(length: Int, errorListener: () -> Unit) {
+fun TextView.isLengthEqual(length: Int, errorListener: (() -> Unit)? = null) {
     checkConstraintResult(this.text.toString()
-        .trim().length == length) { errorListener() }
+        .trim().length == length) { errorListener?.invoke() }
 }
 
-fun TextView.isContainingNumber(errorListener: () -> Unit) {
-    checkConstraintResult(this.text.toString().trim().contains(Regex(".*\\d.*"))) { errorListener() }
+fun TextView.isContainingNumber(errorListener: (() -> Unit)? = null) {
+    checkConstraintResult(this.text.toString().trim().contains(Regex(".*\\d.*"))) { errorListener?.invoke() }
 }
 
 
-fun TextView.isContainingUpperCase(errorListener: () -> Unit) {
-    checkConstraintResult(this.text.toString().trim().contains(Regex(".*[A-Z]"))) { errorListener() }
+fun TextView.isContainingUpperCase(errorListener: (() -> Unit)? = null) {
+    checkConstraintResult(this.text.toString().trim().contains(Regex(".*[A-Z]"))) { errorListener?.invoke() }
 }
 
-fun TextView.isContaining(vararg value: String, errorListener: () -> Unit) {
+fun TextView.isContaining(vararg value: String, errorListener: (() -> Unit)? = null) {
     var isOneItemContaining = false
     run breaker@{
         value.forEach {
@@ -68,10 +68,10 @@ fun TextView.isContaining(vararg value: String, errorListener: () -> Unit) {
             }
         }
     }
-    checkConstraintResult(isOneItemContaining) { errorListener() }
+    checkConstraintResult(isOneItemContaining) { errorListener?.invoke() }
 }
 
-fun TextView.isEqual(vararg value: String, errorListener: () -> Unit) {
+fun TextView.isEqual(vararg value: String, errorListener: (() -> Unit)? = null) {
     var isOneItemEqual = false
     run breaker@{
         value.forEach {
@@ -81,5 +81,5 @@ fun TextView.isEqual(vararg value: String, errorListener: () -> Unit) {
             }
         }
     }
-    checkConstraintResult(isOneItemEqual) { errorListener() }
+    checkConstraintResult(isOneItemEqual) { errorListener?.invoke() }
 }

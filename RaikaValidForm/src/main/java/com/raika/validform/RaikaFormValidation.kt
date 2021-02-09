@@ -8,10 +8,10 @@ class RaikaFormValidation {
 
     fun <T> addConstraint(
         target: T,
-        type: (T.() -> Unit)? = null,
+        type: T.() -> Unit,
     ): RaikaFormValidation {
         validationList.add(FormValidationModel(target))
-        type?.invoke(target)
+        type.invoke(target)
         return this
     }
 
