@@ -24,6 +24,7 @@ the library will work with
 - [Functions](https://github.com/hsnmrd/RaikaFormValidation#functions)  
 - [Restrictions](https://github.com/hsnmrd/RaikaFormValidation#restrictions) 
 - [Supporting Additional Target](https://github.com/hsnmrd/RaikaFormValidation#supporting-additional-target) 
+- [Change Log](https://github.com/hsnmrd/RaikaFormValidation#change-log) 
 
 
 # Usage  
@@ -135,5 +136,23 @@ fun TextView.isRequire(errorListener: () -> Unit) {
 **```condition```** : ```this.text.toString().trim().isNotEmpty()```  
 	
 	
+
 	
 	
+# Change Log  
+### version 1.0-alpha4  
+- the error handler is optional now
+```kotlin
+RaikaFormValidation()
+	.addConstraint(etFirstName) {
+	    isRequire()
+	}
+```  
+- ```isEmail``` status is checked when the target is not empty (uses in ```EditText```, ```TextView``` and ```String```)   
+ 
+### version 1.0-alpha2
+- fix some bugs
+
+
+### version 1.0-alpha1
+- library introduced 
