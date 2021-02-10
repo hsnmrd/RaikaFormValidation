@@ -151,7 +151,7 @@ RaikaFormValidation()
 - ```isEmail``` status is checked when the target is not empty (uses in ```EditText```, ```TextView``` and ```String```)   
  
 ### version 1.0-alpha2
-- fix some bugs
+- some bugs fixed
 
 
 ### version 1.0-alpha1
